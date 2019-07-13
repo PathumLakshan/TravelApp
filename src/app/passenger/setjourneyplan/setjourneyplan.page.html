@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/dashboard" routerDirection="back">
+        <ion-icon slot="icon-only" name="arrow-dropleft"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Set Journey Plan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-list lines="none">
+
+    <form [formGroup]="slideOneForm">
+
+        <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input formControlName="firstName" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input formControlName="lastName" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating">Age</ion-label>
+            <ion-input formControlName="age" type="number"></ion-input>
+        </ion-item>
+        
+          <ion-button (click)="logForm()" expand="block" color="primary">Send</ion-button>
+        
+    </form>
+
+</ion-list>
+
+
+</ion-content>

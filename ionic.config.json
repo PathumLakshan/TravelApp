@@ -1,5 +1,7 @@
 {
   "name": "TravelApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
