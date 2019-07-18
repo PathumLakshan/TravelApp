@@ -5,18 +5,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './public/login/login.module#LoginPageModule' },
-  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'developers', loadChildren: './pages/developers/developers.module#DevelopersPageModule' },
-  { path: 'developer/:id', loadChildren: './pages/developer/developer.module#DeveloperPageModule' },
   { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
-  { path: 'dashboard', loadChildren: './passenger/dashboard/dashboard.module#DashboardPageModule' },
   { path: 'tripconfirm', loadChildren: './public/tripconfirm/tripconfirm.module#TripconfirmPageModule' },
-
-  {
-    path: 'home',
-    canActivate: [AuthGuard],
-    loadChildren: './home/home.module#HomeRoutingModule' 
-  }
+  { path: 'home', loadChildren: './public/home/home.module#HomePageModule'},
+  { path: 'regdriver', loadChildren: './public/register/regdriver/regdriver.module#RegdriverPageModule' },
+  { path: 'regpassenger', loadChildren: './public/register/regpassenger/regpassenger.module#RegpassengerPageModule' },
+  { path: 'imageupload', loadChildren: './public/imageupload/imageupload.module#ImageuploadPageModule' }
 ];
 
 @NgModule({

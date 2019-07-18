@@ -1,0 +1,22 @@
+<ion-header>
+
+<ion-toolbar>
+  <ion-title>Home Page</ion-title>
+    <ion-icon name="log-out" (click)="logout()"></ion-icon>
+</ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+ <ion-content padding>
+  Welcome to the members only area!
+ 
+  <p>{{ data }}</p>
+ 
+  <ion-button expand="full" (click)="loadSpecialInfo()">Load Special Info</ion-button>
+  <ion-button expand="full" (click)="clearToken()">Clear JWT</ion-button>
+  <ion-button expand="full" routerLink="/tripconfirm">Trip</ion-button>
+
+   <app-multi-file-upload></app-multi-file-upload>
+</ion-content>
+</ion-content>

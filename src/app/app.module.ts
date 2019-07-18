@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -20,6 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+
+
 export function jwtOptionFactory(storage) {
   return {
     tokenGetter: () => {
@@ -34,13 +40,13 @@ export function jwtOptionFactory(storage) {
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
-    HttpClientModule,
-    IonicStorageModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
@@ -54,12 +60,16 @@ export function jwtOptionFactory(storage) {
     SplashScreen,
     Geolocation,
     NativeGeocoder,
-    { provide: RouteReuseStrategy, 
-      useClass: IonicRouteStrategy 
+    { provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
     },
     SQLite,
-    SQLitePorter
+    SQLitePorter,
+    Camera,
+    File,
+    WebView,
+    FilePath
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

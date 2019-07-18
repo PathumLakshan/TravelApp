@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-tripconfirm',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TripconfirmPage implements OnInit {
 
-  constructor() { }
+  cnfrmForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.cnfrmForm = this.formBuilder.group({
+      fullname: ['', Validators.required]
+    });
   }
 
+  onSubmit() {
+    alert('shit')
+  }
 }

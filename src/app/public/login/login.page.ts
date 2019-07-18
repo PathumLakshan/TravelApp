@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../../services/authentication.service';
+import { AuthenticationService } from './../../services/authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -11,7 +11,8 @@ export class LoginPage implements OnInit {
 
   credentialsForm: FormGroup;
 
-  constructor(private authService: AuthenticationService, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthenticationService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.credentialsForm = this.formBuilder.group({
@@ -22,15 +23,6 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     this.authService.login(this.credentialsForm.value).subscribe();
-  }
-
-  register() {
-    this.authService.register(this.credentialsForm.value).subscribe( res =>{
-      this.authService.login(this.credentialsForm.value).subscribe();
-    })
-  }
-  login() {
-  	this.authService.login();
   }
 
 }

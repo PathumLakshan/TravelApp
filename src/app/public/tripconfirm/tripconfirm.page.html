@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content>
-
+ <form [formGroup]="cnfrmForm" (ngSubmit)="onSubmit()">
+ 
+    <ion-item>
+      <ion-label position="floating">Full Name</ion-label>
+      <ion-input type="text" formControlName="fullname"></ion-input>
+    </ion-item>
+    
+  </form>
 </ion-content>
