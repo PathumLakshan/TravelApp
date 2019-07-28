@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
- 
+import { Location } from '@angular/common';
 import { finalize } from 'rxjs/operators';
  
 const STORAGE_KEY = 'my_images';
@@ -24,12 +24,16 @@ export class ImageuploadPage implements OnInit {
   constructor(private camera: Camera, private file: File, private http: HttpClient, private webview: WebView,
               private actionSheetController: ActionSheetController, private toastController: ToastController,
               private storage: Storage, private plt: Platform, private loadingController: LoadingController,
-              private ref: ChangeDetectorRef, private filePath: FilePath) { }
+              private ref: ChangeDetectorRef, private filePath: FilePath, private location: Location) { }
  
   ngOnInit() {
     this.plt.ready().then(() => {
       this.loadStoredImages();
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
  
   loadStoredImages() {

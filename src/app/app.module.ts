@@ -24,6 +24,10 @@ import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { HttpClient,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorHandler } from './services/httperror/httperrorhandler.service';
 
 
 export function jwtOptionFactory(storage) {
@@ -53,7 +57,8 @@ export function jwtOptionFactory(storage) {
         useFactory: jwtOptionFactory,
         deps: [Storage],
       }
-    })
+    }),
+    BrowserAnimationsModule
    ],
   providers: [
     StatusBar,
@@ -68,7 +73,13 @@ export function jwtOptionFactory(storage) {
     Camera,
     File,
     WebView,
-    FilePath
+    FilePath,
+    HttpErrorHandler,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorHandler,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -23,7 +23,9 @@ export class RegdriverPage implements OnInit {
     this.driverregForm = this.formBuilder.group({
       fullname: ['', Validators.required],
       nic: ['', Validators.required],
-      lsno: ['', Validators.required]
+      lsno: ['', Validators.required],
+      dob: [''],
+      address: [''],
     });
   }
 

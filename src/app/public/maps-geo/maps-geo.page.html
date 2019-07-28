@@ -1,0 +1,15 @@
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-title text-center><h1>Maps</h1></ion-title>
+  </ion-toolbar>
+   <ion-button (click)="currentPlace()" shape="round" fill="outline">
+        <ion-icon slot="start" name="locate"></ion-icon>
+        Where I Am
+      </ion-button>
+</ion-header>
+ 
+<ion-content padding>
+  
+    <div #map id="map"></div>
+  
+</ion-content>

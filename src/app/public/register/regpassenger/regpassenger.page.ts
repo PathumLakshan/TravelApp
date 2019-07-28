@@ -11,12 +11,16 @@ export class RegpassengerPage implements OnInit {
 
   passengregForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private authService: AuthenticationService) { }
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.passengregForm = this.formBuilder.group({
       fullname : ['', [Validators.required]],
-      nic: ['']
+      nic: [''],
+      email: [''],
+      country: [''],
+      teleno: ['']
     });
   }
 
@@ -27,7 +31,8 @@ export class RegpassengerPage implements OnInit {
   register() {
     this.authService.register(this.passengregForm.value).subscribe( res => {
       this.authService.login(this.passengregForm.value).subscribe();
-    })
+    });
   }
+
 
 }

@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'home', loadChildren: './public/home/home.module#HomePageModule'},
   { path: 'regdriver', loadChildren: './public/register/regdriver/regdriver.module#RegdriverPageModule' },
   { path: 'regpassenger', loadChildren: './public/register/regpassenger/regpassenger.module#RegpassengerPageModule' },
-  { path: 'imageupload', loadChildren: './public/imageupload/imageupload.module#ImageuploadPageModule' }
+  { path: 'imageupload', loadChildren: './public/imageupload/imageupload.module#ImageuploadPageModule' },
+  { path: 'maps-geo', loadChildren: './public/maps-geo/maps-geo.module#MapsGeoPageModule' }
 ];
 
 @NgModule({

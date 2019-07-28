@@ -6,12 +6,14 @@ import { Storage } from '@ionic/storage';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { environment } from '../../environments/environment';
+import { HttpErrorHandler, HandleError } from './../httperror/httperrorhandler.service';
+
+import { environment } from '../../../environments/environment';
 
 import { tap, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
-import { NotificationService } from './notification.service';
+import { NotificationService } from '../notification/notification.service';
 
 const TOKEN_KEY = 'access_token';
 
@@ -23,15 +25,17 @@ export class AuthenticationService {
   url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
+  private handleError : HandleError;
 
   constructor(private storage: Storage,
               private plt: Platform,
               private http: HttpClient,
               private helper: JwtHelperService,
-              private notification: NotificationService) {
-    this.plt.ready().then(() => {
-      this.checkToken();
-    });
+              private httpErrorHandler: HttpErrorHandler) {
+                this.handleError = httpErrorHandler.createHandleError('Auth Service');
+                this.plt.ready().then(() => {
+                  this.checkToken();
+                });
   }
 
   checkToken() {
@@ -54,10 +58,7 @@ export class AuthenticationService {
   register(credentials) {
     return this.http.post(`${this.url}/api/register`, credentials)
       .pipe(
-        catchError(e => {
-          this.notification.showAlert(e.message);
-          throw new Error(e);
-        })
+        catchError(this.handleError('Use Reg', []))
       );
   }
 
@@ -69,11 +70,7 @@ export class AuthenticationService {
           this.user = this.helper.decodeToken(res[`token`]);
           this.authenticationState.next(true);
         }),
-        catchError(e => {
-          this.notification.showAlert(e.message);
-          console.log(e.message);
-          throw new Error(e);
-        })
+        catchError(this.handleError('Use Login', []))
       )
   }
 
@@ -88,7 +85,7 @@ export class AuthenticationService {
       catchError(e => {
         const status = e.status;
         if(status === 401) {
-          this.notification.showAlert('You are not Authorized for this !');
+         // this.notification.showAlert('You are not Authorized for this !');
           this.logout();
         }
         throw new Error(e);
