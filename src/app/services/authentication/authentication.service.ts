@@ -44,7 +44,7 @@ export class AuthenticationService {
         }
         this.authenticationState.next(true);
       }
-    })
+    });
   }
 
   register(credentials) {
@@ -54,8 +54,7 @@ export class AuthenticationService {
           this.notification.showAlert(e.message);
           throw new Error(e);
          })
-      )
-           // this.handleError('Use Reg', [])
+      );
   }
 
   login(credentials) {
@@ -65,6 +64,7 @@ export class AuthenticationService {
           this.storage.set(TOKEN_KEY, res[`token`]);
           this.user = this.helper.decodeToken(res[`token`]);
           this.authenticationState.next(true);
+          console.log(res[`token`]);
         }),
         catchError(e => {
           this.notification.showAlert(e.message);

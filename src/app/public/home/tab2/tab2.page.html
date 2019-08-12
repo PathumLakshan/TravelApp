@@ -1,32 +1,35 @@
-<ion-header color="dark" center>
-<ion-toolbar>
-  <ion-title>Bids</ion-title>
-</ion-toolbar>
+<ion-content fullscreen padding scroll-y="true">
+<ion-slides>
+  <ion-slide>
+    <h2>LOADER !</h2>
+    <h3>wait here for moment please !</h3>
+    <h6>Driver's will send you budget for your journey</h6>
+  </ion-slide>
+  <ion-slide>
 
+    <ion-list>
+      <ion-list-header>
+        <h4>Recent Notifications from Drivers</h4>
+      </ion-list-header>
+    </ion-list>
 
-</ion-header>
+    <ion-card *ngFor="let bid of bidDetails.bid1">
+      <ion-item>
+        <img src={{bid.prof_pic}} class="profile-pic">
+        <h4>Driver : {{ bid.driverName }}</h4>
+      </ion-item>
+      <ion-item>
+          <p>Budget  : {{ bid.budget }} LKR </p>
+          <p>Vehicle : {{ bid.vehicle }} </p>
+      </ion-item>
 
-
-<ion-content>
-
-<ion-list>
-        <ion-list-header>
-          Recent Notifications from Drivers
-        </ion-list-header>
-
-        <ion-item>
-          <ion-avatar slot="start">
-            <img src="../../../../assets/login.jpg">
-          </ion-avatar>
-          <ion-label>
-            <h2>Finn</h2>
-            <h3>I'm a big deal</h3>
-            <h2>Budget: 40000</h2>
-          </ion-label>
-          <ion-button color="dark" (click)="onClick()"> Confirm This Offer </ion-button>
-        </ion-item>
-</ion-list>
-
-<ion-button color="dark" routerLink="/maps-geo"> Confirm This Offer </ion-button>
+      <ion-card-content>
+        <ion-button fill="outline" expand="small" slot="end" (click)="onClick(bid.bidId)"> Vehicle </ion-button>
+        <ion-button fill="outline" expand="small" slot="end" (click)="onClick(bid.bidId)"> Accept This Offer </ion-button>
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-slide>
+</ion-slides>
  
 </ion-content>

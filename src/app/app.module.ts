@@ -26,7 +26,34 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// firebase cloud messagin
+// import { Firebase } from '@ionic-native/firebase';
 
+// import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+// import { environment } from 'src/environments/environment';
+
+// // firbase Auth
+// import { GAuthenticateService } from '../app/services/g-auth/gauthentication.service';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// import * as firebase from 'firebase/app';
+// import 'firebase/auth';
+// import { FcmService } from './services/fcmService/fcm.service';
+// import { Firebase } from '@ionic-native/firebase/ngx';
+// import { AngularFireModule } from '@angular/fire';
+
+// firebase.initializeApp(environment.firebase);
+
+// const config = {
+//   apiKey: 'AIzaSyDNlZ1hrGN_RJggCqMGjoQDxRzFVMBhwg4',
+//   authDomain: 'travelapp-22107.firebaseapp.com',
+//   databaseURL: 'https://travelapp-22107.firebaseio.com',
+//   projectId: 'travelapp-22107',
+//   storageBucket: '',
+//   messagingSenderId:  50447491700,
+//   appId: '1:50447491700:web:9b7f3defdcb3b9d2'
+// };
 
 export function jwtOptionFactory(storage) {
   return {
@@ -56,8 +83,12 @@ export function jwtOptionFactory(storage) {
         deps: [Storage],
       }
     }),
-    BrowserAnimationsModule
-   ],
+    BrowserAnimationsModule,
+    // AngularFirestoreModule,
+    // AngularFireAuthModule,
+    // AngularFireModule.initializeApp(config)
+  ],
+
   providers: [
     StatusBar,
     SplashScreen,
@@ -71,7 +102,10 @@ export function jwtOptionFactory(storage) {
     Camera,
     File,
     WebView,
-    FilePath
+    FilePath,
+    // Firebase,
+    // FcmService,
+    // GAuthenticateService
   ],
   bootstrap: [AppComponent]
 })

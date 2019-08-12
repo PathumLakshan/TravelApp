@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', loadChildren: './public/home/home.module#HomePageModule'},
   { path: 'imageupload', loadChildren: './public/imageupload/imageupload.module#ImageuploadPageModule' },
   { path: 'maps-geo', loadChildren: './public/maps-geo/maps-geo.module#MapsGeoPageModule' },
+  { path: 'register', loadChildren: './public/register/register.module#RegisterPageModule' },
   
 ];
 

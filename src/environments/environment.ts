@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:3000'
+  url: 'http://localhost:3000',
+  firebase : {
+    apiKey: 'AIzaSyDNlZ1hrGN_RJggCqMGjoQDxRzFVMBhwg4',
+    authDomain: 'travelapp-22107.firebaseapp.com',
+    databaseURL: 'https://travelapp-22107.firebaseio.com',
+    projectId: 'travelapp-22107',
+    storageBucket: '',
+    messagingSenderId:  50447491700,
+    appId: '1:50447491700:web:9b7f3defdcb3b9d2'
+  }
 };
 
 /*
