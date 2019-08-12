@@ -16,6 +16,25 @@ import { ToastController } from '@ionic/angular';
 export class HomePage implements OnInit {
 
   data = '';
+  cards = {
+    card: [
+      {
+        cardTitle:'first Card',
+        cardsubTitle: '1st subtitle',
+        content: 'This is the first card on driver view'
+      },
+      {
+        cardTitle:'second Card',
+        cardsubTitle: '2nd subtitle',
+        content: 'This is the 2nd card on driver view'
+      },
+      {
+        cardTitle:'third Card',
+        cardsubTitle: '3rd subtitle',
+        content: 'This is the third card on driver view'
+      }
+    ]
+  };
 
   constructor(private authService: AuthenticationService,
               private storage: Storage,

@@ -35,4 +35,15 @@ export class LoginPage implements OnInit {
     this.authService.login(this.credentialsForm.value).subscribe();
   }
 
+  register() {
+    this.authService.register(this.credentialsForm.value).subscribe(res => {
+      // Call Login to automatically login the new user
+      this.authService.login(this.credentialsForm.value).subscribe();
+    });
+  }
+
+  signUpPas() {
+    alert('google auth');
+  }
+
 }

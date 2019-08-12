@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegpassengerPage } from './regpassenger.page';
+import { Tab2Page } from './tab2.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegpassengerPage
+    component: Tab2Page
   }
 ];
 
@@ -18,10 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RegpassengerPage]
+  declarations: [Tab2Page]
 })
-export class RegpassengerPageModule {}
+export class Tab2PageModule {}

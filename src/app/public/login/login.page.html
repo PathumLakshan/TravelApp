@@ -1,24 +1,27 @@
 
-<ion-content padding>
+<ion-content padding class="auth-page">
 
-  <ion-header>LOGIN</ion-header>
+  <ion-header> 
+   <div class="logo"></div>
+   <ion-title> Login </ion-title>
+  </ion-header>
 
 
   <form [formGroup]="credentialsForm" (ngSubmit)="onSubmit()">
   <ion-grid>
-    <ion-row>
+    <ion-row class="no-background">
       <ion-col>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
+          <ion-input class="input-text" type="email" formControlName="email"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="no-background">
       <ion-col>
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
+            <ion-input class="input-text" type="password" formControlName="password"></ion-input>
           </ion-item>
       </ion-col>
     </ion-row>
@@ -29,26 +32,29 @@
       
       <ion-col>
         <ion-button color="dark" expand="block" type="submit" [disabled]="!credentialsForm.valid">Login</ion-button>
+        <ion-button color="dark" expand="block" (click)="register()" >Register</ion-button>
       </ion-col>
       <ion-col>
       </ion-col>
       
     </ion-row>
     
-    
-    <ion-row center>
+    <div class="signup">
+    <ion-row >
       <ion-col>
       </ion-col>
-      
       <ion-col>
-        <ion-button color="dark" expand="block" type="button" routerLink="/register" >Register</ion-button>
+        <ion-text><h2>Sign Up</h2></ion-text>
       </ion-col>
       <ion-col>
-      
       </ion-col>
-      
     </ion-row>
-    
+    <ion-row>
+      <ion-col>
+        <ion-button color="dark" expand="block" type="button" (click)="signUpPas()" ><ion-icon name="logo-google"> </ion-icon> Sign Up</ion-button>
+      </ion-col>
+    </ion-row>
+    </div>
   </ion-grid>
 </form>
 

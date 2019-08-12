@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { ToastController  } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  constructor(private alertController: AlertController) { }
+  constructor(private toastController : ToastController ) { }
 
   showAlert(msg) {
-    const alert = this.alertController.create({
+    const alert = this.toastController.create({
       header: 'Error',
       message: msg,
       buttons: ['OK']

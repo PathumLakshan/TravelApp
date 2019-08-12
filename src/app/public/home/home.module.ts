@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from '../../material.module';
 
 @NgModule({
@@ -12,12 +13,7 @@ import { MaterialModule } from '../../material.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ]),
+    HomeRoutingModule,
     MaterialModule,
     ReactiveFormsModule
   ],

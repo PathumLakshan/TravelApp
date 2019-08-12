@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegdriverPage } from './regdriver.page';
+import { Tab3Page } from './tab3.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegdriverPage
+    component: Tab3Page
   }
 ];
 
@@ -18,10 +18,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [RegdriverPage]
+  declarations: [Tab3Page]
 })
-export class RegdriverPageModule {}
+export class Tab3PageModule {}

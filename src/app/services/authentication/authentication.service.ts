@@ -6,8 +6,6 @@ import { Storage } from '@ionic/storage';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { HttpErrorHandler, HandleError } from './../httperror/httperrorhandler.service';
-
 import { environment } from '../../../environments/environment';
 
 import { tap, catchError } from 'rxjs/operators';
@@ -25,18 +23,12 @@ export class AuthenticationService {
   url = environment.url;
   user = null;
   authenticationState = new BehaviorSubject(false);
-  private handleError : HandleError;
 
   constructor(private storage: Storage,
               private plt: Platform,
               private http: HttpClient,
               private helper: JwtHelperService,
-              private httpErrorHandler: HttpErrorHandler) {
-                this.handleError = httpErrorHandler.createHandleError('Auth Service');
-                this.plt.ready().then(() => {
-                  this.checkToken();
-                });
-  }
+              private notification: NotificationService) { }
 
   checkToken() {
     this.storage.get(TOKEN_KEY).then(token => {
@@ -58,8 +50,12 @@ export class AuthenticationService {
   register(credentials) {
     return this.http.post(`${this.url}/api/register`, credentials)
       .pipe(
-        catchError(this.handleError('Use Reg', []))
-      );
+         catchError(e => {
+          this.notification.showAlert(e.message);
+          throw new Error(e);
+         })
+      )
+           // this.handleError('Use Reg', [])
   }
 
   login(credentials) {
@@ -70,7 +66,10 @@ export class AuthenticationService {
           this.user = this.helper.decodeToken(res[`token`]);
           this.authenticationState.next(true);
         }),
-        catchError(this.handleError('Use Login', []))
+        catchError(e => {
+          this.notification.showAlert(e.message);
+          throw new Error(e);
+         })
       )
   }
 
@@ -88,6 +87,7 @@ export class AuthenticationService {
          // this.notification.showAlert('You are not Authorized for this !');
           this.logout();
         }
+        this.notification.showAlert(e);
         throw new Error(e);
       })
     )
